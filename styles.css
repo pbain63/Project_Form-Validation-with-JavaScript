@@ -5,3 +5,36 @@
   padding: 0;
   margin: 0;
 }
+
+p * {
+  display: block;
+}
+
+input[type="text"] {
+  appearance: none;
+  width: 100%;
+  border: 1px solid #333333;
+  font-family: inherit;
+  font-size: 90%;
+}
+
+input:invalid {
+  border-color: #990000;
+  background-color: #ffdddd;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
+.error {
+  width: 100%;
+  font-size: 80%;
+  color: white;
+  background-color: #990000;
+  border-radius: 0 0 5px 5px;
+}
+
+.error.active {
+  /* padding: 0.3em; */
+}
