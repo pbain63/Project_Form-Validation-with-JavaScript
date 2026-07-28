@@ -6,11 +6,13 @@
   margin: 0;
 }
 
+/* Name */
 p * {
   display: block;
 }
 
-input[type="text"] {
+/* input[type="text"] */
+input {
   appearance: none;
   width: 100%;
   border: 1px solid #333333;
@@ -38,3 +40,5 @@ input:focus:invalid {
 .error.active {
   /* padding: 0.3em; */
 }
+
+/* Email */
