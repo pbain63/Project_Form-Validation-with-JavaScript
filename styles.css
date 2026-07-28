@@ -6,6 +6,29 @@
   margin: 0;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* padding-bottom: 1rem; */
+  
+  /* padding-top: 2rem; */
+}
+h1 {
+  padding-bottom: 2rem;
+}
+/* .container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  
+} */
+.form-container {
+  display: flex;
+  gap: 3rem;
+}
 /* Name */
 p * {
   display: block;
