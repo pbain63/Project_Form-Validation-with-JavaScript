@@ -1,9 +1,9 @@
 const form = document.querySelector("form");
 const yourName = document.getElementById("name");
-const yourNameError = document.querySelector("#name + span.error");
+const yourNameError = document.querySelector(".error");
 
 const email = document.getElementById("mail");
-const emailError = document.querySelector("#mail + span.email-error");
+const emailError = document.querySelector(".email-error");
 
 const countrySelect = document.getElementById("country");
 const postalCodeField = document.getElementById("postal-code");
@@ -11,12 +11,10 @@ const postalCodeField = document.getElementById("postal-code");
 const postalCodeError = document.querySelector(".postal-code-error");
 
 const password = document.getElementById("password");
-const passwordError = document.querySelector("#password + span.password-error");
+const passwordError = document.querySelector(".password-error");
 
 const confirmPassword = document.getElementById("confirm-password");
-const confirmPasswordError = document.querySelector(
-  "#confirm-password + span.confirm-password-error"
-);
+const confirmPasswordError = document.querySelector(".confirm-password-error");
 
 // Name
 yourName.addEventListener("input", (event) => {
@@ -102,7 +100,7 @@ function checkPostalCode() {
 
   const constraint = new RegExp(constraints[countrySelectValue][0]);
 
-  if ((postalCodeField.value === "")) {
+  if (postalCodeField.value === "") {
     postalCodeField.setCustomValidity("");
     postalCodeError.textContent = "";
 
