@@ -5,6 +5,19 @@ const yourNameError = document.querySelector("#name + span.error");
 const email = document.getElementById("mail");
 const emailError = document.querySelector("#mail + span.email-error");
 
+const countrySelect = document.getElementById("country");
+const postalCodeField = document.getElementById("postal-code");
+// look at the below class and compare others
+const postalCodeError = document.querySelector(".postal-code-error");
+
+const password = document.getElementById("password");
+const passwordError = document.querySelector("#password + span.password-error");
+
+const confirmPassword = document.getElementById("confirm-password");
+const confirmPasswordError = document.querySelector(
+  "#confirm-password + span.confirm-password-error"
+);
+
 // Name
 yourName.addEventListener("input", (event) => {
   if (yourName.validity.valid) {
@@ -57,4 +70,54 @@ function emailShowError() {
   }
 
   emailError.className = "email-error active";
+}
+
+// Country & Postal Code
+
+const constraints = {
+  ch: [
+    "^(CH-)?\\d{4}$",
+    "Swiss postal codes must have exactly 4 digits: e.g. CH-1950 or 1950",
+  ],
+  fr: [
+    "^(F-)?\\d{5}$",
+    "French postal codes must have exactly 5 digits: e.g. F-75012 or 75012",
+  ],
+  de: [
+    "^(D-)?\\d{5}$",
+    "German postal codes must have exactly 5 digits: e.g. D-12345 or 12345",
+  ],
+  nl: [
+    "^(NL-)?\\d{4}\\s*([A-RT-Z][A-Z]|S[BCE-RT-Z])$",
+    "Dutch postal codes must have exactly 4 digits, followed by 2 letters except SA, SD and SS",
+  ],
+  bd: [
+    "^\\d{4}$",
+    "Bangladesh postal codes must have exactly 4 digits: e.g. 1213",
+  ],
+};
+
+function checkPostalCode() {
+  const countrySelectValue = countrySelect.value;
+
+  const constraint = new RegExp(constraints[countrySelectValue][0]);
+
+  if ((postalCodeField.value = "")) {
+    postalCodeField.setCustomValidity("");
+    postalCodeError.textContent = "";
+
+    return;
+  }
+
+  if (constraint.test(postalCodeField.value)) {
+    postalCodeField.setCustomValidity("");
+    postalCodeError.textContent = "";
+    postalCodeError.className = "postal-code-error";
+  } else {
+    const errorMessage = constraints[countrySelectValue][1];
+
+    postalCodeField.setCustomValidity(errorMessage);
+    postalCodeError.textContent = errorMessage;
+    postalCodeError.className = "postal-code-error active";
+  }
 }
