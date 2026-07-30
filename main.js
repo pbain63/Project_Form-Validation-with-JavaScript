@@ -20,7 +20,7 @@ const confirmPasswordError = document.querySelector(".confirm-password-error");
 yourName.addEventListener("input", (event) => {
   if (yourName.validity.valid) {
     yourNameError.textContent = "";
-    // yourNameError.textContent = "error";
+    yourNameError.className = "error";
   } else {
     showError();
   }
@@ -37,7 +37,7 @@ function showError() {
   if (yourName.validity.valueMissing) {
     yourNameError.textContent = "Please enter your name.";
   }
-  //   yourNameError.className = "error active";
+    yourNameError.className = "error active";
 }
 
 // Email
