@@ -121,3 +121,6 @@ function checkPostalCode() {
     postalCodeError.className = "postal-code-error active";
   }
 }
+
+countrySelect.addEventListener("change", checkPostalCode);
+postalCodeField.addEventListener("input", checkPostalCode);
