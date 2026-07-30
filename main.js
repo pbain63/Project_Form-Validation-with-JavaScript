@@ -102,7 +102,7 @@ function checkPostalCode() {
 
   const constraint = new RegExp(constraints[countrySelectValue][0]);
 
-  if ((postalCodeField.value = "")) {
+  if ((postalCodeField.value === "")) {
     postalCodeField.setCustomValidity("");
     postalCodeError.textContent = "";
 
