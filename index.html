@@ -24,7 +24,7 @@
               <label for="password">
                 <span>Password *:</span>
                 <input type="password" id="password" name="password" required />
-                <span class="error" aria-live="polite"></span>
+                <span class="password-error" aria-live="polite"></span>
               </label>
             </p>
 
@@ -37,7 +37,7 @@
                   name="confirm-password"
                   required
                 />
-                <span class="error" aria-live="polite"></span>
+                <span class="confirm-password-error" aria-live="polite"></span>
               </label>
             </p>
           </div>
@@ -70,6 +70,7 @@
             <p>
               <label for="postal-code">Postal Code *:</label>
               <input type="text" name="postal-code" id="postal-code" required />
+              <span class="postal-code-error" aria-live="polite"></span>
             </p>
           </div>
         </div>
