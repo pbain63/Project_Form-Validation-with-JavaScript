@@ -14,7 +14,7 @@ form {
   align-items: center;
 
   /* padding-bottom: 1rem; */
-  
+
   /* padding-top: 2rem; */
 }
 h1 {
@@ -54,7 +54,9 @@ input:focus:invalid {
   outline: none;
 }
 
-.error, .email-error {
+.error,
+.email-error,
+.postal-code-error {
   width: 100%;
   font-size: 80%;
   color: white;
@@ -62,8 +64,10 @@ input:focus:invalid {
   border-radius: 0 0 5px 5px;
 }
 
-.error.active {
-  /* padding: 0.3em; */
+.error.active,
+.email-error.active,
+.postal-code-error.active {
+  padding: 0.3em;
 }
 
 /* Email */
