@@ -124,3 +124,14 @@ function checkPostalCode() {
 
 countrySelect.addEventListener("change", checkPostalCode);
 postalCodeField.addEventListener("input", checkPostalCode);
+
+form.addEventListener("submit", (event) => {
+  checkPostalCode();
+
+  if (!postalCodeField.validity.valid) {
+    event.preventDefault();
+
+    postalCodeError.textContent = postalCodeField.validationMessage;
+    postalCodeError.className = "postal-code-error active";
+  }
+});
