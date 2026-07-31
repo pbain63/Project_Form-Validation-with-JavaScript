@@ -196,5 +196,12 @@ form.addEventListener("submit", (event) => {
 
   checkPasswordsMatch();
 
+  if (!confirmPassword.validity.valid) {
+    event.preventDefault();
 
-})
+    if (confirmPassword.value === "") {
+      confirmPasswordError.textContent = "Please confirm your password.";
+      confirmPasswordError.className = "confirm-password-error active";
+    }
+  }
+});
