@@ -37,7 +37,7 @@ function showError() {
   if (yourName.validity.valueMissing) {
     yourNameError.textContent = "Please enter your name.";
   }
-    yourNameError.className = "error active";
+  yourNameError.className = "error active";
 }
 
 // Email
@@ -133,3 +133,32 @@ form.addEventListener("submit", (event) => {
     postalCodeError.className = "postal-code-error active";
   }
 });
+
+// Password
+
+password.addEventListener("input", () => {
+  if (password.validity.valid) {
+    passwordError.textContent = "";
+    passwordError.className = "password-error";
+  } else {
+    passwordShowError();
+  }
+
+  if (confirmPassword.value !== "") {
+    checkPasswordsMatch();
+  }
+});
+
+function passwordShowError() {
+  if (password.validity.valueMissing) {
+    passwordError.textContent = "Please enter your password.";
+  } else if (password.validity.tooShort) {
+    passwordError.textContent =
+      `Password should be at least ${password.minLength} characters;` +
+      `you entered ${password.value.length}.`;
+  }
+
+  passwordError.className = "password-error active";
+}
+
+
