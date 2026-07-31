@@ -161,4 +161,30 @@ function passwordShowError() {
   passwordError.className = "password-error active";
 }
 
+// Confirm Password
+
+confirmPassword.addEventListener("input", () => {
+  checkPasswordsMatch();
+});
+
+function checkPasswordsMatch() {
+  if (confirmPassword.value === "") {
+    confirmPassword.setCustomValidity("");
+
+    confirmPasswordError.textContent = "";
+    confirmPasswordError.className = "confirm-password-error";
+  } else if (password.value === confirmPassword.value) {
+    confirmPassword.setCustomValidity("");
+    confirmPasswordError.textContent = "✓ Passwords match.";
+
+    confirmPasswordError.className = "confirm-password-error match";
+  } else {
+    confirmPassword.setCustomValidity("Passwords do not match.");
+    confirmPasswordError.textContent = "☒ Passwords do not match.";
+
+    confirmPasswordError.className = "confirm-password-error active";
+  }
+}
+
+// Form submission
 
