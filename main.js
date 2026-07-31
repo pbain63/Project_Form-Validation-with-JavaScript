@@ -190,7 +190,7 @@ function checkPasswordsMatch() {
 
 form.addEventListener("submit", (event) => {
   if (!password.validity.valid) {
-    passwordError();
+    passwordShowError();
     event.preventDefault();
   }
 
