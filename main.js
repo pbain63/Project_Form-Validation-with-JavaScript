@@ -188,3 +188,13 @@ function checkPasswordsMatch() {
 
 // Form submission
 
+form.addEventListener("submit", (event) => {
+  if (!password.validity.valid) {
+    passwordError();
+    event.preventDefault();
+  }
+
+  checkPasswordsMatch();
+
+
+})
