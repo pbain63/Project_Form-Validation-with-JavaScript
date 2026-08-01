@@ -1,207 +1,315 @@
-const form = document.querySelector("form");
-const yourName = document.getElementById("name");
-const yourNameError = document.querySelector(".error");
+// Form elements
 
-const email = document.getElementById("mail");
-const emailError = document.querySelector(".email-error");
+const form = document.getElementById("signup-form");
+
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("mail");
+
+const passwordInput = document.getElementById("password");
+
+const confirmPasswordInput = document.getElementById("confirm-password");
 
 const countrySelect = document.getElementById("country");
-const postalCodeField = document.getElementById("postal-code");
-// look at the below class and compare others
-const postalCodeError = document.querySelector(".postal-code-error");
 
-const password = document.getElementById("password");
-const passwordError = document.querySelector(".password-error");
+const postalCodeInput = document.getElementById("postal-code");
 
-const confirmPassword = document.getElementById("confirm-password");
-const confirmPasswordError = document.querySelector(".confirm-password-error");
+// Error elements
 
-// Name
-yourName.addEventListener("input", (event) => {
-  if (yourName.validity.valid) {
-    yourNameError.textContent = "";
-    yourNameError.className = "error";
-  } else {
-    showError();
-  }
-});
+const nameError = document.getElementById("name-error");
 
-form.addEventListener("submit", (event) => {
-  if (!yourName.validity.valid) {
-    showError();
-    event.preventDefault();
-  }
-});
+const emailError = document.getElementById("email-error");
 
-function showError() {
-  if (yourName.validity.valueMissing) {
-    yourNameError.textContent = "Please enter your name.";
-  }
-  yourNameError.className = "error active";
-}
+const passwordError = document.getElementById("password-error");
 
-// Email
+const confirmPasswordError = document.getElementById("confirm-password-error");
 
-email.addEventListener("input", (event) => {
-  if (email.validity.valid) {
-    emailError.textContent = "";
-    emailError.className = "email-error";
-  } else {
-    emailShowError();
-  }
-});
+const postalCodeError = document.getElementById("postal-code-error");
 
-form.addEventListener("submit", (event) => {
-  if (!email.validity.valid) {
-    emailShowError();
-    event.preventDefault();
-  }
-});
+// Success elements
 
-function emailShowError() {
-  if (email.validity.valueMissing) {
-    emailError.textContent = "You need to enter an email address.";
-  } else if (email.validity.typeMismatch) {
-    emailError.textContent = "Entered value needs to be an email address.";
-  } else if (email.validity.tooShort) {
-    emailError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
-  }
+const successMessage = document.querySelector(".success-message");
 
-  emailError.className = "email-error active";
-}
+const userName = document.querySelector(".user-name");
 
-// Country & Postal Code
+const backToFormButton = document.querySelector(".back-to-form");
 
-const constraints = {
-  ch: [
-    "^(CH-)?\\d{4}$",
-    "Swiss postal codes must have exactly 4 digits: e.g. CH-1950 or 1950",
-  ],
-  fr: [
-    "^(F-)?\\d{5}$",
-    "French postal codes must have exactly 5 digits: e.g. F-75012 or 75012",
-  ],
-  de: [
-    "^(D-)?\\d{5}$",
-    "German postal codes must have exactly 5 digits: e.g. D-12345 or 12345",
-  ],
-  nl: [
-    "^(NL-)?\\d{4}\\s*([A-RT-Z][A-Z]|S[BCE-RT-Z])$",
-    "Dutch postal codes must have exactly 4 digits, followed by 2 letters except SA, SD and SS",
-  ],
-  bd: [
-    "^\\d{4}$",
-    "Bangladesh postal codes must have exactly 4 digits: e.g. 1213",
-  ],
+// Postal-code rules
+
+const postalConstraints = {
+  ch: {
+    pattern: /^(CH-)?\d{4}$/,
+
+    message:
+      "Swiss postal codes must have exactly 4 digits. Example: CH-1950 or 1950.",
+  },
+
+  fr: {
+    pattern: /^(F-)?\d{5}$/,
+
+    message:
+      "French postal codes must have exactly 5 digits. Example: F-75012 or 75012.",
+  },
+
+  de: {
+    pattern: /^(D-)?\d{5}$/,
+
+    message:
+      "German postal codes must have exactly 5 digits. Example: D-12345 or 12345.",
+  },
+
+  nl: {
+    pattern: /^(NL-)?\d{4}\s*([A-RT-Z][A-Z]|S[BCE-RT-Z])$/,
+
+    message: "Dutch postal codes must contain 4 digits followed by 2 letters.",
+  },
+
+  bd: {
+    pattern: /^\d{4}$/,
+
+    message:
+      "Bangladesh postal codes must have exactly 4 digits. Example: 1213.",
+  },
 };
 
-function checkPostalCode() {
-  const countrySelectValue = countrySelect.value;
+// Helper functions
 
-  const constraint = new RegExp(constraints[countrySelectValue][0]);
+function showError(errorElement, message) {
+  errorElement.textContent = message;
 
-  if (postalCodeField.value === "") {
-    postalCodeField.setCustomValidity("");
-    postalCodeError.textContent = "";
+  errorElement.classList.add("active");
+}
 
+function clearError(errorElement) {
+  errorElement.textContent = "";
+
+  errorElement.classList.remove("active");
+
+  errorElement.classList.remove("success");
+}
+
+function showSuccess(errorElement, message) {
+  errorElement.textContent = message;
+
+  errorElement.classList.remove("active");
+
+  errorElement.classList.add("success");
+}
+
+// Name validation
+
+function validateName() {
+  if (nameInput.validity.valueMissing) {
+    showError(nameError, "Please enter your name.");
+
+    return false;
+  }
+
+  clearError(nameError);
+
+  return true;
+}
+
+// Email validation
+
+function validateEmail() {
+  if (emailInput.validity.valueMissing) {
+    showError(emailError, "Please enter an email address.");
+
+    return false;
+  }
+
+  if (emailInput.validity.typeMismatch) {
+    showError(emailError, "Please enter a valid email address.");
+
+    return false;
+  }
+
+  if (emailInput.validity.tooShort) {
+    showError(
+      emailError,
+      `Email must contain at least ${emailInput.minLength} characters.`
+    );
+
+    return false;
+  }
+
+  clearError(emailError);
+
+  return true;
+}
+
+// Password validation
+
+function validatePassword() {
+  if (passwordInput.validity.valueMissing) {
+    showError(passwordError, "Please enter a password.");
+
+    return false;
+  }
+
+  if (passwordInput.validity.tooShort) {
+    showError(
+      passwordError,
+      `Password must contain at least ${passwordInput.minLength} characters. You entered ${passwordInput.value.length}.`
+    );
+
+    return false;
+  }
+
+  clearError(passwordError);
+
+  return true;
+}
+
+// Password confirmation validation
+
+function validateConfirmPassword() {
+  if (confirmPasswordInput.value === "") {
+    confirmPasswordInput.setCustomValidity("");
+
+    showError(confirmPasswordError, "Please confirm your password.");
+
+    return false;
+  }
+
+  if (passwordInput.value !== confirmPasswordInput.value) {
+    confirmPasswordInput.setCustomValidity("Passwords do not match.");
+
+    showError(confirmPasswordError, "Passwords do not match.");
+
+    return false;
+  }
+
+  confirmPasswordInput.setCustomValidity("");
+
+  showSuccess(confirmPasswordError, "✓ Passwords match.");
+
+  return true;
+}
+
+// Postal-code validation
+
+function validatePostalCode() {
+  const country = countrySelect.value;
+
+  const rule = postalConstraints[country];
+
+  if (postalCodeInput.value === "") {
+    postalCodeInput.setCustomValidity("");
+
+    showError(postalCodeError, "Please enter a postal code.");
+
+    return false;
+  }
+
+  if (!rule.pattern.test(postalCodeInput.value)) {
+    postalCodeInput.setCustomValidity(rule.message);
+
+    showError(postalCodeError, rule.message);
+
+    return false;
+  }
+
+  postalCodeInput.setCustomValidity("");
+
+  clearError(postalCodeError);
+
+  return true;
+}
+
+// Validate while typing
+
+nameInput.addEventListener("input", validateName);
+
+emailInput.addEventListener("input", validateEmail);
+
+passwordInput.addEventListener("input", () => {
+  validatePassword();
+
+  if (confirmPasswordInput.value !== "") {
+    validateConfirmPassword();
+  }
+});
+
+confirmPasswordInput.addEventListener("input", validateConfirmPassword);
+
+postalCodeInput.addEventListener("input", validatePostalCode);
+
+countrySelect.addEventListener("change", validatePostalCode);
+
+// Submit form
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const isNameValid = validateName();
+
+  const isEmailValid = validateEmail();
+
+  const isPasswordValid = validatePassword();
+
+  const isConfirmPasswordValid = validateConfirmPassword();
+
+  const isPostalCodeValid = validatePostalCode();
+
+  const isFormValid =
+    isNameValid &&
+    isEmailValid &&
+    isPasswordValid &&
+    isConfirmPasswordValid &&
+    isPostalCodeValid;
+
+  if (!isFormValid) {
     return;
   }
 
-  if (constraint.test(postalCodeField.value)) {
-    postalCodeField.setCustomValidity("");
-    postalCodeError.textContent = "";
-    postalCodeError.className = "postal-code-error";
-  } else {
-    const errorMessage = constraints[countrySelectValue][1];
+  // Show success message
 
-    postalCodeField.setCustomValidity(errorMessage);
-    postalCodeError.textContent = errorMessage;
-    postalCodeError.className = "postal-code-error active";
-  }
-}
+  userName.textContent = nameInput.value;
 
-countrySelect.addEventListener("change", checkPostalCode);
-postalCodeField.addEventListener("input", checkPostalCode);
+  form.classList.add("blur");
 
-form.addEventListener("submit", (event) => {
-  checkPostalCode();
-
-  if (!postalCodeField.validity.valid) {
-    event.preventDefault();
-
-    postalCodeError.textContent = postalCodeField.validationMessage;
-    postalCodeError.className = "postal-code-error active";
-  }
+  successMessage.hidden = false;
 });
 
-// Password
+// Back to Form
 
-password.addEventListener("input", () => {
-  if (password.validity.valid) {
-    passwordError.textContent = "";
-    passwordError.className = "password-error";
-  } else {
-    passwordShowError();
-  }
+backToFormButton.addEventListener("click", () => {
+  // Reset input values
 
-  if (confirmPassword.value !== "") {
-    checkPasswordsMatch();
-  }
-});
+  form.reset();
 
-function passwordShowError() {
-  if (password.validity.valueMissing) {
-    passwordError.textContent = "Please enter your password.";
-  } else if (password.validity.tooShort) {
-    passwordError.textContent =
-      `Password should be at least ${password.minLength} characters;` +
-      `you entered ${password.value.length}.`;
-  }
+  // Clear custom validation
 
-  passwordError.className = "password-error active";
-}
+  postalCodeInput.setCustomValidity("");
 
-// Confirm Password
+  confirmPasswordInput.setCustomValidity("");
 
-confirmPassword.addEventListener("input", () => {
-  checkPasswordsMatch();
-});
+  // Clear error messages
 
-function checkPasswordsMatch() {
-  if (confirmPassword.value === "") {
-    confirmPassword.setCustomValidity("");
+  clearError(nameError);
 
-    confirmPasswordError.textContent = "";
-    confirmPasswordError.className = "confirm-password-error";
-  } else if (password.value === confirmPassword.value) {
-    confirmPassword.setCustomValidity("");
-    confirmPasswordError.textContent = "✓ Passwords match.";
+  clearError(emailError);
 
-    confirmPasswordError.className = "confirm-password-error match";
-  } else {
-    confirmPassword.setCustomValidity("Passwords do not match.");
-    confirmPasswordError.textContent = "☒ Passwords do not match.";
+  clearError(passwordError);
 
-    confirmPasswordError.className = "confirm-password-error active";
-  }
-}
+  clearError(confirmPasswordError);
 
-// Form submission
+  clearError(postalCodeError);
 
-form.addEventListener("submit", (event) => {
-  if (!password.validity.valid) {
-    passwordShowError();
-    event.preventDefault();
-  }
+  // Remove blur
 
-  checkPasswordsMatch();
+  form.classList.remove("blur");
 
-  if (!confirmPassword.validity.valid) {
-    event.preventDefault();
+  // Hide success message
 
-    if (confirmPassword.value === "") {
-      confirmPasswordError.textContent = "Please confirm your password.";
-      confirmPasswordError.className = "confirm-password-error active";
-    }
-  }
+  successMessage.hidden = true;
+
+  // Clear displayed name
+
+  userName.textContent = "";
+
+  // Put cursor in name field
+
+  nameInput.focus();
 });
