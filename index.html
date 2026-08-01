@@ -7,22 +7,31 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <form novalidate>
-      <!-- <div class="container"> -->
-      <h1>Required fields are followed by "*"</h1>
-      <div class="form-container">
-        <div class="form-left-side">
-          <p>
-            <label for="name">
-              <span>Name *:</span>
-              <input type="text" id="name" name="name" required />
-              <span class="error" aria-live="polite"></span>
-            </label>
-          </p>
+    <main class="form-page">
+      <!-- Form -->
+      <form id="signup-form" novalidate>
+        <h1>Required fields are followed by "*"</h1>
 
-          <p>
-            <label for="password">
-              <span>Password *:</span>
+        <div class="form-container">
+          <!-- Left side -->
+          <div class="form-left-side">
+            <!-- Name -->
+            <div class="form-group">
+              <label for="name"> Name * </label>
+
+              <input type="text" id="name" name="name" required />
+
+              <span
+                class="error-message"
+                id="name-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <label for="password"> Password * </label>
+
               <input
                 type="password"
                 id="password"
@@ -30,27 +39,39 @@
                 required
                 minlength="8"
               />
-              <span class="password-error" aria-live="polite"></span>
-            </label>
-          </p>
 
-          <p>
-            <label for="confirm-password">
-              <span>Password Confirmation *:</span>
+              <span
+                class="error-message"
+                id="password-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <!-- Password confirmation -->
+            <div class="form-group">
+              <label for="confirm-password"> Password Confirmation * </label>
+
               <input
                 type="password"
                 id="confirm-password"
                 name="confirm-password"
                 required
               />
-              <span class="confirm-password-error" aria-live="polite"></span>
-            </label>
-          </p>
-        </div>
-        <div class="form-right-side">
-          <p>
-            <label for="mail">
-              <span>Email *:</span>
+
+              <span
+                class="error-message"
+                id="confirm-password-error"
+                aria-live="polite"
+              ></span>
+            </div>
+          </div>
+
+          <!-- Right side -->
+          <div class="form-right-side">
+            <!-- Email -->
+            <div class="form-group">
+              <label for="mail"> Email * </label>
+
               <input
                 type="email"
                 id="mail"
@@ -58,33 +79,62 @@
                 required
                 minlength="8"
               />
-              <span class="email-error" aria-live="polite"></span>
-            </label>
-          </p>
 
-          <p>
-            <label for="country">Country *:</label>
-            <select id="country">
-              <option value="ch">Switzerland</option>
-              <option value="fr">France</option>
-              <option value="de">Germany</option>
-              <option value="nl">The Netherlands</option>
-              <option value="bd">Bangladesh</option>
-            </select>
-          </p>
+              <span
+                class="error-message"
+                id="email-error"
+                aria-live="polite"
+              ></span>
+            </div>
 
-          <p>
-            <label for="postal-code">Postal Code *:</label>
-            <input type="text" name="postal-code" id="postal-code" required />
-            <span class="postal-code-error" aria-live="polite"></span>
-          </p>
+            <!-- Country -->
+            <div class="form-group">
+              <label for="country"> Country * </label>
+
+              <select id="country" name="country" required>
+                <option value="ch">Switzerland</option>
+
+                <option value="fr">France</option>
+
+                <option value="de">Germany</option>
+
+                <option value="nl">The Netherlands</option>
+
+                <option value="bd">Bangladesh</option>
+              </select>
+            </div>
+
+            <!-- Postal code -->
+            <div class="form-group">
+              <label for="postal-code"> Postal Code * </label>
+
+              <input type="text" id="postal-code" name="postal-code" required />
+
+              <span
+                class="error-message"
+                id="postal-code-error"
+                aria-live="polite"
+              ></span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="form-submit">
-        <button type="submit">Submit</button>
-      </div>
-      <!-- </div> -->
-    </form>
+
+        <button class="submit-button" type="submit">Submit</button>
+      </form>
+
+      <!-- Success message -->
+      <section class="success-message" aria-live="polite" hidden>
+        <h2>Form submitted successfully!</h2>
+
+        <p>
+          Thank you,
+          <span class="user-name"></span>.
+        </p>
+
+        <button type="button" class="back-to-form">Back to Form</button>
+      </section>
+    </main>
+
     <script src="./main.js"></script>
   </body>
 </html>
