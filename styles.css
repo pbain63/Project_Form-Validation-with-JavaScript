@@ -1,80 +1,255 @@
 *,
-*::after,
-*::before {
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
+
+body {
+  min-height: 100vh;
+
+  margin: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 2rem;
+
+  font-family: Arial, sans-serif;
+
+  background-color: #f4f4f4;
+}
+
+/* Main page */
+
+.form-page {
+  width: min(900px, 100%);
+
+  position: relative;
+}
+
+/* Form */
 
 form {
-  /* border: 2px solid red; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 2rem;
 
-  /* padding-bottom: 1rem; */
+  background-color: white;
 
-  /* padding-top: 2rem; */
+  border-radius: 12px;
+
+  box-shadow: 0 5px 20px rgb(0 0 0 / 10%);
+
+  transition: filter 200ms ease;
 }
+
+/* Blur after submission */
+
+form.blur {
+  filter: blur(5px);
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
 h1 {
-  padding-bottom: 2rem;
-}
-/* .container {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; 
-  
-} */
-.form-container {
-  display: flex;
-  gap: 3rem;
-  /* border: 2px solid red; */
-}
-/* Name */
-p * {
-  display: block;
+  margin-top: 0;
+
+  margin-bottom: 2rem;
+
+  text-align: center;
 }
 
-/* input[type="text"] */
-input {
-  appearance: none;
-  width: 100%;
-  border: 1px solid #333333;
-  font-family: inherit;
-  font-size: 90%;
+/* Two columns */
+
+.form-container {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 2rem;
 }
+
+/* Form group */
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+label {
+  display: block;
+
+  margin-bottom: 0.4rem;
+
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+
+  padding: 0.7rem;
+
+  font: inherit;
+
+  border: 1px solid #777;
+
+  border-radius: 5px;
+}
+
+input:focus,
+select:focus {
+  outline: 3px solid rgb(50 120 255 / 25%);
+
+  border-color: #3278ff;
+}
+
+/* Invalid input */
 
 input:invalid {
   border-color: #990000;
-  background-color: #ffdddd;
 }
 
-input:focus:invalid {
-  outline: none;
+/* Error message */
+
+.error-message {
+  display: block;
+
+  min-height: 0;
+
+  margin-top: 0.25rem;
+
+  font-size: 0.85rem;
+
+  border-radius: 4px;
 }
 
-.error,
-.email-error,
-.postal-code-error,
-.password-error,
-.confirm-password-error {
-  width: 100%;
-  font-size: 80%;
+/* Active error */
+
+.error-message.active {
+  padding: 0.5rem;
+
   color: white;
+
   background-color: #990000;
-  border-radius: 0 0 5px 5px;
 }
 
-.error.active,
-.email-error.active,
-.postal-code-error.active,
-.password-error.active,
-.confirm-password-error.active {
-  padding: 0.3em;
+/* Password-match message */
+
+.error-message.success {
+  padding: 0.5rem;
+
+  color: white;
+
+  background-color: #198754;
 }
 
-.confirm-password-error.match {
-  padding: 0.3em;
-  background-color: green;
+/* Submit button */
+
+.submit-button {
+  display: block;
+
+  width: 100%;
+
+  padding: 0.8rem;
+
+  margin-top: 1rem;
+
+  color: white;
+
+  font: inherit;
+
+  font-weight: bold;
+
+  background-color: #3278ff;
+
+  border: none;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #1d60dc;
+}
+
+/* Success message */
+
+.success-message {
+  position: absolute;
+
+  top: 50%;
+
+  left: 50%;
+
+  width: min(400px, calc(100% - 2rem));
+
+  transform: translate(-50%, -50%);
+
+  padding: 2rem;
+
+  text-align: center;
+
+  background-color: white;
+
+  border-radius: 12px;
+
+  box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
+
+  z-index: 10;
+}
+
+.success-message[hidden] {
+  display: none;
+}
+
+.success-message h2 {
+  margin-top: 0;
+
+  color: #198754;
+}
+
+.success-message p {
+  margin-bottom: 1.5rem;
+}
+
+.back-to-form {
+  padding: 0.7rem 1.2rem;
+
+  color: white;
+
+  font: inherit;
+
+  font-weight: bold;
+
+  background-color: #3278ff;
+
+  border: none;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.back-to-form:hover {
+  background-color: #1d60dc;
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  body {
+    padding: 1rem;
+  }
+
+  form {
+    padding: 1.25rem;
+  }
+
+  .form-container {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
 }
