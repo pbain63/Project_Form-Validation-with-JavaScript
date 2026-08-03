@@ -101,12 +101,12 @@ function validateName() {
   if (nameInput.validity.valueMissing) {
     showError(nameError, "Please enter your name.");
 
-    return false;
+    return false; // Stop! It can't pass
   }
 
   clearError(nameError);
 
-  return true;
+  return true; // Go. It passes
 }
 
 // Email validation
@@ -116,15 +116,11 @@ function validateEmail() {
     showError(emailError, "Please enter an email address.");
 
     return false;
-  }
-
-  if (emailInput.validity.typeMismatch) {
+  } else if (emailInput.validity.typeMismatch) {
     showError(emailError, "Please enter a valid email address.");
 
     return false;
-  }
-
-  if (emailInput.validity.tooShort) {
+  } else if (emailInput.validity.tooShort) {
     showError(
       emailError,
       `Email must contain at least ${emailInput.minLength} characters.`
@@ -145,9 +141,7 @@ function validatePassword() {
     showError(passwordError, "Please enter a password.");
 
     return false;
-  }
-
-  if (passwordInput.validity.tooShort) {
+  } else if (passwordInput.validity.tooShort) {
     showError(
       passwordError,
       `Password must contain at least ${passwordInput.minLength} characters. You entered ${passwordInput.value.length}.`
@@ -170,9 +164,7 @@ function validateConfirmPassword() {
     showError(confirmPasswordError, "Please confirm your password.");
 
     return false;
-  }
-
-  if (passwordInput.value !== confirmPasswordInput.value) {
+  } else if (passwordInput.value !== confirmPasswordInput.value) {
     confirmPasswordInput.setCustomValidity("Passwords do not match.");
 
     showError(confirmPasswordError, "Passwords do not match.");
