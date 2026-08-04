@@ -143,7 +143,7 @@ function validateConfirmPassword() {
   }
 
   confirmPasswordInput.setCustomValidity("");
-  showSuccess(confirmPasswordError, "✓ Passwords match");
+  showSuccess(confirmPasswordError, "✓ Passwords match.");
 
   return true;
 }
