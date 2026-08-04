@@ -12,7 +12,6 @@ A lightweight, robust client-side form validation solution built with **Vanilla 
 - [Tech Stack](#-Tech-Stack)
 - [Project Structure](#-project-structure)
 - [Getting Started](#-getting-started)
-- [Browser Support](#-browser-support)
 - [Future Improvements](#-future-improvements)
 - [Contributing](#-Contributing)
 - [License](#-License)
@@ -118,16 +117,6 @@ D. Form submission: Only proceeds if all validations pass, then displays a succe
 
 ---
 
-## Browser Support
-
-```
-
-Feature	                     Chrome  Firefox  Safari  Edge
-Constraint Validation API	✅	✅	✅	✅
-CSS Grid                	✅	✅	✅	✅
-ES6                     	✅	✅	✅	✅
-
-```
 
 ## Future Improvements
 
