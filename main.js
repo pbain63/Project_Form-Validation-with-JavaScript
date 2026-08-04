@@ -43,7 +43,8 @@ const postalConstraints = {
 
   nl: {
     pattern: /^(NL-)?\d{4}\s*([A-RT-Z][A-Z]|S[BCE-RT-Z])$/,
-    message: "Dutch postal codes must contain 4 digits followed by 2 letters.",
+    message:
+      "Dutch postal codes must contain 4 digits followed by 2 letters except SA, SD and SS. Example: 1234VF",
   },
 
   bd: {
@@ -89,7 +90,7 @@ function validateEmail() {
     showError(emailError, "Please enter an email address.");
 
     return false;
-  } else if (emailInput.validity.typeMisMatch) {
+  } else if (emailInput.validity.typeMismatch) {
     showError(emailError, "Please enter a valid email address.");
 
     return false;
@@ -124,7 +125,7 @@ function validatePassword() {
 
   clearError(passwordError);
 
-  return false;
+  return true;
 }
 
 // Password confirmation validation
