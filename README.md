@@ -6,15 +6,15 @@ A lightweight, robust client-side form validation solution built with **Vanilla 
 
 ## Table of Contents
 
-- [Screenshot](#-Screenshot)
-- [Overview](#-overview)
-- [Features](#-features)
-- [Tech Stack](#-Tech-Stack)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Future Improvements](#-future-improvements)
-- [Contributing](#-Contributing)
-- [License](#-License)
+- [Screenshot](#screenshot)
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Future Improvements](#future-improvements)
+- [Contributing](#Contributing)
+- [License](#license)
 
 ---
 
@@ -116,7 +116,6 @@ C. Visual feedback: Error messages appear inline with color coded styling:
 D. Form submission: Only proceeds if all validations pass, then displays a success overlay.
 
 ---
-
 
 ## Future Improvements
 
