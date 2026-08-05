@@ -1,6 +1,6 @@
 # Form Validation with JavaScript
 
-A lightweight, robust client-side form validation solution built with **Vanilla JavaScript**. This project demonstrates industry best practices for DOM manipulation, Regular Expressions (Regex), and user experience (UX) design by providing real-time, semantic feedback without relying on heavy external libraries.
+A lightweight, robust client side form validation solution built with **Vanilla JavaScript**. This project demonstrates industry best practices for DOM manipulation, Regular Expressions (Regex), and user experience (UX) design by providing real time, semantic feedback without relying on heavy external libraries.
 
 ## [Live Demo](https://pbain63.github.io/Project_Form-Validation-with-JavaScript/)
 
@@ -24,17 +24,17 @@ A lightweight, robust client-side form validation solution built with **Vanilla 
 
 ## Overview
 
-This project demonstrates client-side form validation using the **Constraint Validation API** — a native browser API that provides built-in validation without external libraries.[reference:0] The form collects user registration data (name, password, email, country, postal code) with real-time validation feedback and a success state upon submission.
+This project demonstrates client side form validation using the **Constraint Validation API**, a native browser API that provides built in validation without external libraries. The form collects user registration data (name, password, email, country, postal code) with real time validation feedback and a success state upon submission.
 
 ## Features
 
-- **Real-time validation** — Each field validates on input, providing instant feedback
-- **Constraint Validation API** — Leverages native browser validation (`validity.valueMissing`, `validity.typeMismatch`, `validity.tooShort`)[reference:2]
-- **Country‑specific postal code validation** — Supports Switzerland (4 digits), France (5 digits), Germany (5 digits), The Netherlands (4 digits + 2 letters), and Bangladesh (4 digits)[reference:3]
-- **Password confirmation check** — Ensures both password fields match[reference:4]
-- **Success overlay** — Displays a confirmation message with the user's name after successful submission[reference:5]
-- **Fully responsive** — Adapts to mobile screens with a single‑column layout[reference:6]
-- **Accessible feedback** — Clear error and success messages with appropriate ARIA‑friendly styling
+- **Real time validation**: Each field validates on input, providing instant feedback
+- **Constraint Validation API**: Leverages native browser validation (`validity.valueMissing`, `validity.typeMismatch`, `validity.tooShort`)
+- **Country specific postal code validation**: Supports Switzerland (4 digits), France (5 digits), Germany (5 digits), The Netherlands (4 digits + 2 letters), and Bangladesh (4 digits)
+- **Password confirmation check**: Ensures both password fields match
+- **Success overlay**: Displays a confirmation message with the user's name after successful submission
+- **Fully responsive**: Adapts to mobile screens with a single column layout
+- **Accessible feedback**: Clear error and success messages with appropriate ARIA friendly styling
 
 ## Tech Stack
 
