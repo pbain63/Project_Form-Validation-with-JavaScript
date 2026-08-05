@@ -2,6 +2,7 @@
 
 A lightweight, robust client side form validation solution built with **Vanilla JavaScript**. This project demonstrates industry best practices for DOM manipulation, Regular Expressions (Regex), and user experience (UX) design by providing real time, semantic feedback without relying on heavy external libraries.
 
+---
 ## [Live Demo](https://pbain63.github.io/Project_Form-Validation-with-JavaScript/)
 
 ## Table of Contents
