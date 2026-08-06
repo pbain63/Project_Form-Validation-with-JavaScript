@@ -16,6 +16,7 @@ A lightweight, robust client side form validation solution built with **Vanilla 
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
+- [Validation Flow](#validation-flow)
 - [Future Improvements](#future-improvements)
 - [Contributing](#Contributing)
 - [License](#license)
@@ -97,7 +98,7 @@ Project_Form-Validation-with-JavaScript/
 
 2. **Open the project**
 
-Double‑click index.html to open in your browser, OR
+Double click index.html to open in your browser, OR
 
 Use a local development server (recommended):
 
@@ -107,7 +108,7 @@ Use a local development server (recommended):
 
 ```
 
-### Validation Flow
+## Validation Flow
 
 A. User inputs data: Each field triggers validation on input events
 
