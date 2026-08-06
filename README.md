@@ -3,7 +3,10 @@
 A lightweight, robust client side form validation solution built with **Vanilla JavaScript**. This project demonstrates industry best practices for DOM manipulation, Regular Expressions (Regex), and user experience (UX) design by providing real time, semantic feedback without relying on heavy external libraries.
 
 ---
+
 ## [Live Demo](https://pbain63.github.io/Project_Form-Validation-with-JavaScript/)
+
+---
 
 ## Table of Contents
 
@@ -21,16 +24,17 @@ A lightweight, robust client side form validation solution built with **Vanilla 
 
 ## Screenshots
 
-| Desktop View                                         | Desktop View with error message                                       | Mobile View                                        | Mobile View with success message                                              |
-| ---------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------- |
+| Desktop View                                     | Desktop View with error message                                   | Mobile View                            | Mobile View with success message                                                 |
+| ------------------------------------------------ | ----------------------------------------------------------------- | -------------------------------------- | -------------------------------------------------------------------------------- |
 | ![Desktop](screenshots/desktop-view-general.png) | ![Desktop-with-error-message](screenshots/desktop-view-error.png) | ![Mobile](screenshots/mobile-view.png) | ![Mobile-View-with-success-message](screenshots/mobile-view-success-message.png) |
-
 
 ---
 
 ## Overview
 
 This project demonstrates client side form validation using the **Constraint Validation API**, a native browser API that provides built in validation without external libraries. The form collects user registration data (name, password, email, country, postal code) with real time validation feedback and a success state upon submission.
+
+---
 
 ## Features
 
@@ -41,6 +45,8 @@ This project demonstrates client side form validation using the **Constraint Val
 - **Success overlay**: Displays a confirmation message with the user's name after successful submission
 - **Fully responsive**: Adapts to mobile screens with a single column layout
 - **Accessible feedback**: Clear error and success messages with appropriate ARIA friendly styling
+
+---
 
 ## Tech Stack
 
@@ -70,6 +76,8 @@ Project_Form-Validation-with-JavaScript/
 └── README.md # Project documentation
 
 ```
+
+---
 
 ## Getting Started
 
@@ -134,6 +142,8 @@ D. Form submission: Only proceeds if all validations pass, then displays a succe
 - Unit testing
 - Better animation and transitions
 
+---
+
 ## Contributing
 
 Contributions are welcome! Please follow these guidelines:
@@ -147,6 +157,8 @@ Contributions are welcome! Please follow these guidelines:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 
 5. Open a Pull Request
+
+---
 
 ## License
 
