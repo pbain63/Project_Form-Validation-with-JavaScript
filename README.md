@@ -19,7 +19,12 @@ A lightweight, robust client side form validation solution built with **Vanilla 
 
 ---
 
-## Screenshot
+## Screenshots
+
+| Desktop View                                         | Desktop View with error message                                       | Mobile View                                        | Mobile View with success message                                              |
+| ---------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------- |
+| ![Desktop](screenshots/desktop-view-general.png) | ![Desktop-with-error-message](screenshots/desktop-view-error.png) | ![Mobile](screenshots/mobile-view.png) | ![Mobile-View-with-success-message](screenshots/mobile-view-success-message.png) |
+
 
 ---
 
