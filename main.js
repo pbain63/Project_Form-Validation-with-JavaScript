@@ -26,19 +26,19 @@ const postalConstraints = {
   ch: {
     pattern: /^(CH-)?\d{4}$/,
     message:
-      "Swiss postal codes must have exactly 4 digits. Example: CH-1950 or 1950.",
+      "Swiss postal codes must have exactly 4 digits. Example: CH-1950 or 1950",
   },
 
   fr: {
     pattern: /^(F-)?\d{5}$/,
     message:
-      "French postal codes must have exactly 5 digits. Example: F-75012 or 75012.",
+      "French postal codes must have exactly 5 digits. Example: F-75012 or 75012",
   },
 
   de: {
     pattern: /^(D-)?\d{5}$/,
     message:
-      "German postal codes must have exactly 5 digits. Example: D-12345 or 12345.",
+      "German postal codes must have exactly 5 digits. Example: D-12345 or 12345",
   },
 
   nl: {
@@ -50,7 +50,7 @@ const postalConstraints = {
   bd: {
     pattern: /^\d{4}$/,
     message:
-      "Bangladesh postal codes must have exactly 4 digits. Example: 1213.",
+      "Bangladesh postal codes must have exactly 4 digits. Example: 1213",
   },
 };
 
